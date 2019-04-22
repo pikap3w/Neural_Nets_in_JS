@@ -1,4 +1,4 @@
-//* EXCLUSIVE OR (XOR) NEURAL NETWORK *//
+//* XOR (EXCLUSIVE OR) NEURAL NETWORK *//
 
 const net = new brain.NeuralNetwork({ hiddenLayers: [3] });
 
@@ -9,8 +9,12 @@ const trainingData = [
   { input: [1, 1], output: [0] }
 ];
 
-net.train(trainingData);
+//* TRAIN *//
+// Displays the error at each iteration (multiples of 100)
+net.train(trainingData, {
+  log: (error) => console.log(error),
+  logPeriod: 100
+});
 
-// Output
-
+//* TEST *//
 console.log(net.run(trainingData[0].input));
